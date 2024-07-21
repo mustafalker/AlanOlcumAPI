@@ -1,6 +1,7 @@
 const { Sequelize, DataTypes } = require('sequelize');
 const sequelize = require('../utility/database');
 
+//Drawing Model
 const Drawing = sequelize.define('Drawing', {
     id: {
         type: DataTypes.INTEGER,

@@ -1,12 +1,12 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const cors = require('cors'); // CORS kütüphanesini 
+const cors = require('cors'); // CORS kütüphanesi
 const sequelize = require('./utility/database');
 const app = express();
 
 // CORS ayarları
 const corsOptions = {
-    origin: 'http://localhost:4200', // Angular uygulamaöın url i 
+    origin: 'http://localhost:4200', // Angular app url 
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     allowedHeaders: ['Content-Type', 'Authorization'],
     credentials: true

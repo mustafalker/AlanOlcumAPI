@@ -1,5 +1,6 @@
 const Sequelize = require('sequelize');
 
+//Db Con
 const sequelize = new Sequelize('AlanOlcum', 'sa', '123456789Mustafa', {
     host: 'localhost',
     port: 1434,
