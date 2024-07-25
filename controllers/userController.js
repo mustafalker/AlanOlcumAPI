@@ -35,9 +35,8 @@ exports.login = async (req, res) => {
             return res.status(400).json({ error: 'Invalid username or password' });
         }
 
-        const token = jwt.sign({ id: user.id, role: user.role }, 'your_jwt_secret', { expiresIn: '1h' });
-        res.json({ token, role: user.role }); // Rolü de yanıtla birlikte döndür. Buda frontendte role dayalı local storage ta
-        //bilgi depolamamı sağladı
+        const token = jwt.sign({ id: user.id, username: user.username, role: user.role }, 'your_jwt_secret', { expiresIn: '1h' });
+        res.json({ token, role: user.role, username: user.username }); // Rolü ve kullanıcı adını yanıtla birlikte döndür
     } catch (error) {
         res.status(400).json({ error: error.message });
     }

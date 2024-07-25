@@ -1,7 +1,6 @@
 const { Sequelize, DataTypes } = require('sequelize');
 const sequelize = require('../utility/database');
 
-//Drawing Model
 const Drawing = sequelize.define('Drawing', {
     id: {
         type: DataTypes.INTEGER,
@@ -23,6 +22,11 @@ const Drawing = sequelize.define('Drawing', {
     },
     userId: {
         type: DataTypes.INTEGER,
+        allowNull: false
+    },
+    createdAt: {
+        type: DataTypes.DATE,
+        defaultValue: Sequelize.NOW,
         allowNull: false
     }
 }, {});
