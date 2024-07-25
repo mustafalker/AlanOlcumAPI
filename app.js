@@ -12,7 +12,7 @@ const corsOptions = {
     credentials: true
 };
 
-app.use(cors(corsOptions)); // CORS ayarları
+app.use(cors(corsOptions)); // CORS ayarları kullanımı
 
 // Sync Database
 sequelize.sync()

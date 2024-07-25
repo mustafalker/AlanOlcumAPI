@@ -6,7 +6,7 @@ const jwt = require('jsonwebtoken');
 exports.register = async (req, res) => {
     try {
         const { username, password, role } = req.body;
-        const hashedPassword = await bcrypt.hash(password, 10); // Şifreyi hashle
+        const hashedPassword = await bcrypt.hash(password, 10); // Şifreyi hashleme işlemi
         const user = await User.create({ username, password: hashedPassword, role });
         res.status(201).json(user);
     } catch (error) {
@@ -36,7 +36,8 @@ exports.login = async (req, res) => {
         }
 
         const token = jwt.sign({ id: user.id, role: user.role }, 'your_jwt_secret', { expiresIn: '1h' });
-        res.json({ token, role: user.role }); // Rolü de yanıtla birlikte döndür
+        res.json({ token, role: user.role }); // Rolü de yanıtla birlikte döndür. Buda frontendte role dayalı local storage ta
+        //bilgi depolamamı sağladı
     } catch (error) {
         res.status(400).json({ error: error.message });
     }

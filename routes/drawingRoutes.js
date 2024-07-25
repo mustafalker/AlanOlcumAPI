@@ -1,10 +1,14 @@
-//Drawing Routes
 module.exports = (app) => {
     const drawingController = require('../controllers/drawingController');
-    const authMiddleware = require('../middleware/auth');
-    app.post('/drawings', authMiddleware, drawingController.create);
-    app.get('/drawings', authMiddleware, drawingController.findAll);
-    app.get('/drawings/:id', authMiddleware, drawingController.findOne);
-    app.put('/drawings/:id', authMiddleware, drawingController.update);
-    app.delete('/drawings/:id', authMiddleware, drawingController.delete);
+    const { verifyToken, verifyAdmin } = require('../middleware/auth');
+    
+    app.post('/drawings', verifyToken, drawingController.create);
+    app.get('/drawings', verifyToken, drawingController.findAll);
+    app.get('/drawings/:id', verifyToken, drawingController.findOne);
+    app.put('/drawings/:id', verifyToken, drawingController.update);
+    app.delete('/drawings/:id', verifyToken, drawingController.delete);
+    
+    // Admin özel
+    app.get('/admin/drawings', verifyToken, verifyAdmin, drawingController.findAll);
+    app.put('/admin/drawings/:id', verifyToken, verifyAdmin, drawingController.update);
 };
